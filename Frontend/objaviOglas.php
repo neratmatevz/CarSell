@@ -46,6 +46,7 @@
                                     echo "Dobrodošel, <b>".$user_data->username."</b>";
                                 ?>
                                 <br>
+                                <a href="spremeniPodatke.php?idUporabnik=<?php echo $user_data->idUporabnik ?>">SPREMENI PODATKE</a> |
                                 <a href="/Backend/logout.php">LOGOUT</a>
                             </p>
                         </li>
@@ -57,7 +58,7 @@
         <div class="container-fluid">
             <div class="row d-flex justify-content-center">
                 <div class="col-7">
-                    <form class="mt-3 border p-3 rounded shadow-lg" enctype="multipart/form-data" method="post">
+                    <form class="mt-4 border p-3 rounded shadow-lg" enctype="multipart/form-data" method="post">
                         <p class="h3">
                             Objavite svoj oglas!
                         </p>
