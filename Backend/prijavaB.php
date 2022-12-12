@@ -15,14 +15,27 @@
         if(!$uporabnik){
             echo '<script>alert("Napacno uporabnisko ime ali geslo!");</script>';
         }else{
-            $validPassword = password_verify($password,$uporabnik->password);
+            if($uporabnik->admin == "TRUE"){
+                $validPassword = password_verify($password,$uporabnik->password);
+                
+                if($validPassword){
+                    $_SESSION['idUporabnik'] = $uporabnik->idUporabnik;
+                    header("Location: admin.php");
+                }else{
+                    echo '<script>alert("Napacno uporabnisko ime ali geslo!");</script>';
+                }
 
-            if($validPassword){
-                $_SESSION['idUporabnik'] = $uporabnik->idUporabnik;
-                header("Location: index.php");
             }else{
-                echo '<script>alert("Napacno uporabnisko ime ali geslo!");</script>';
+                $validPassword = password_verify($password,$uporabnik->password);
+
+                if($validPassword){
+                    $_SESSION['idUporabnik'] = $uporabnik->idUporabnik;
+                    header("Location: index.php");
+                }else{
+                    echo '<script>alert("Napacno uporabnisko ime ali geslo!");</script>';
+                }
             }
+            
         }
     }     
 
